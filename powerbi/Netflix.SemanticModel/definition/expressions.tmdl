@@ -1,0 +1,19 @@
+/// Shared cleansing of the Kaggle CSV. Both Netflix and Dim Title build on this so the file is parsed, typed and filtered once instead of twice.
+expression NetflixSource =
+		let
+		    Source = Csv.Document(File.Contents("D:\Git\PowerBi\Netflix Dashboard\data\netflix_titles.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"show_id", type text}, {"type", type text}, {"title", type text}, {"director", type text}, {"cast", type text}, {"country", type text}, {"date_added", type date}, {"release_year", Int64.Type}, {"rating", type text}, {"duration", type text}, {"listed_in", type text}, {"description", type text}}),
+		    #"Changed Type with Locale" = Table.TransformColumnTypes(#"Changed Type", {{"date_added", type date}}, "en-GB"),
+		    #"Removed Errors" = Table.RemoveRowsWithErrors(#"Changed Type with Locale", {"date_added"}),
+		    #"Replaced Value" = Table.ReplaceValue(#"Removed Errors","s","",Replacer.ReplaceText,{"show_id"}),
+		    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value",{{"show_id", Int64.Type}}),
+		    #"Removed Errors1" = Table.RemoveRowsWithErrors(#"Changed Type2", {"show_id"}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Removed Errors1",{{"show_id", "ID"}, {"type", "Type"}, {"title", "Title"}, {"director", "Director"}, {"cast", "Cast"}, {"country", "Country"}, {"date_added", "Date Added"}, {"release_year", "Release Year"}, {"rating", "Rating"}, {"duration", "Duration"}, {"description", "Description"}, {"listed_in", "Genre"}}),
+		    #"Removed Blank Rows" = Table.SelectRows(#"Renamed Columns", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+		    #"Filtered Rows" = Table.SelectRows(#"Removed Blank Rows", each ([Rating] <> "66 min" and [Rating] <> "74 min" and [Rating] <> "84 min")),
+		    #"Trimmed Text" = Table.TransformColumns(#"Filtered Rows",{{"Cast", Text.Trim, type text}, {"Country", Text.Trim, type text}, {"Genre", Text.Trim, type text}})
+		in
+		    #"Trimmed Text"
+	lineageTag: c48b3909-5a35-4df3-b28d-46040bc87044
+

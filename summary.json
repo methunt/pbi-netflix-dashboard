@@ -1,0 +1,73 @@
+{
+  "source": {
+    "name": "Netflix Movies and TV Shows",
+    "platform": "Kaggle",
+    "raw_rows": 8807,
+    "columns": 12,
+    "kept_rows": 8804,
+    "dropped_bad_rating": 3
+  },
+  "catalogue": {
+    "titles_rows": 8804,
+    "movies": 6126,
+    "tv_shows": 2675,
+    "distinct_titles_dax": 8799,
+    "countries": 122,
+    "genres": 42,
+    "ratings": 14,
+    "directors": 4527,
+    "people_credited": 36439,
+    "release_from": 1925,
+    "release_to": 2021,
+    "added_from": "2008-01-01",
+    "added_to": "2021-09-25"
+  },
+  "gaps": {
+    "no_country": 831,
+    "no_director": 2634,
+    "no_cast": 825,
+    "no_date_added": 10,
+    "multi_genre": 6787,
+    "multi_country": 1320
+  },
+  "reconciliation": {
+    "case_insensitive_dupe_pairs": 6,
+    "pairs_that_collapse_in_dax": 5,
+    "titles_as_both_movie_and_show": [
+      "death note",
+      "fullmetal alchemist"
+    ]
+  },
+  "model": {
+    "bridge_rows": 23760,
+    "bridge_rows_before": 186396,
+    "reduction_factor": 7.8,
+    "tables": 5,
+    "measures": 14,
+    "measures_simplified": 7,
+    "shared_queries": 1,
+    "dax_distinct_countries": 123,
+    "dax_distinct_genres": 43,
+    "dax_distinct_ratings": 15,
+    "dax_distinct_directors": 4525
+  },
+  "findings": {
+    "us_titles": 3685,
+    "india_titles": 1046,
+    "uk_titles": 806,
+    "tv_ma": 3205,
+    "tv_14": 2160,
+    "top_genre": "International Movies",
+    "top_genre_titles": 2750,
+    "dramas": 2426,
+    "peak_year": 2019,
+    "peak_year_movies": 1424,
+    "peak_year_shows": 592,
+    "tv_peak_year": 2020,
+    "tv_peak_shows": 595,
+    "genres_in_movies": 21,
+    "genres_in_shows": 22,
+    "top_director": "Rajiv Chilaka",
+    "top_director_titles": 19
+  }
+}

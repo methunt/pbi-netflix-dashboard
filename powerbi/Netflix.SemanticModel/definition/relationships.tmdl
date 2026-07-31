@@ -1,0 +1,9 @@
+relationship 545b7879-20c7-4616-9d7c-7b00efb3da38
+	fromColumn: Netflix.'Date Added'
+	toColumn: Date.Date
+
+relationship 0ddf7712-2ab8-4b0e-a10b-411c10956613
+	crossFilteringBehavior: bothDirections
+	fromColumn: Netflix.ID
+	toColumn: 'Dim Title'.ID
+

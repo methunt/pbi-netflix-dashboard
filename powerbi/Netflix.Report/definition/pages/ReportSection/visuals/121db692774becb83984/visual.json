@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "121db692774becb83984",
+  "position": {
+    "x": 15.195702225633154,
+    "y": 303.91404451266305,
+    "z": 4000,
+    "height": 60.782808902532615,
+    "width": 187.87413660782809,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Movies Bt",
+    "groupMode": "ScaleMode"
+  }
+}

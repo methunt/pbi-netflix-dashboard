@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "68ca177ca1e2c1ee539f",
+  "position": {
+    "x": 15,
+    "y": 423.125,
+    "z": 3000,
+    "height": 60.625,
+    "width": 185.625,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "Tv Shows Bt",
+    "groupMode": "ScaleMode"
+  }
+}

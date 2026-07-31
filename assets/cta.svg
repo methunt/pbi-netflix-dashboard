@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1330 260"
+     width="1330" height="260" role="img" aria-label="Open the live report">
+  <style>
+    .rise { animation: rise .5s cubic-bezier(.2,.7,.3,1) both; }
+    @keyframes rise { from { transform: translateY(8px) } to { transform: translateY(0) } }
+    .sheen { animation: sheen 5s ease-in-out infinite 1.2s; }
+    @keyframes sheen { from { transform: translateX(-260px) }
+                        to   { transform: translateX(1330px) } }
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .sheen { animation: none }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4C6EF5"/>
+      <stop offset="55%" stop-color="#6D63F0"/>
+      <stop offset="100%" stop-color="#9257EC"/>
+    </linearGradient>
+    <linearGradient id="sheenfade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-60%" width="120%" height="240%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#6D63F0"
+                    flood-opacity="0.34"/>
+    </filter>
+    <clipPath id="clip">
+      <rect x="20" y="46" width="1292" height="168" rx="34"/>
+    </clipPath>
+  </defs>
+
+  <g class="rise">
+    <rect x="20" y="46" width="1292" height="168" rx="34"
+          fill="url(#bar)" filter="url(#sh)"/>
+    <g clip-path="url(#clip)">
+      <rect class="sheen" x="20" y="46" width="200" height="168" fill="url(#sheenfade)"/>
+    </g>
+
+    <g transform="translate(104 130)">
+      <circle r="38" fill="none" stroke="#FFFFFF" stroke-opacity="0.72" stroke-width="4"/>
+      <path d="M-10 -17 L-10 17 L20 0 Z" fill="#FFFFFF"/>
+    </g>
+
+    <text x="180" y="122" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="38"
+          font-weight="700" fill="#FFFFFF">Open the live report</text>
+    <text x="180" y="164" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="26"
+          fill="#FFFFFF" fill-opacity="0.86">Power BI service  ·  runs in your browser  ·  no sign-in, no cloud account</text>
+  </g>
+</svg>

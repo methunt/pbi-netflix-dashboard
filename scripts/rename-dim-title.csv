@@ -1,0 +1,13 @@
+From Table,From col,To table,To col
+Netflix (3),ID,Dim Title,ID
+Netflix (3),Type,Dim Title,Type
+Netflix (3),Title,Dim Title,Title
+Netflix (3),Director,Dim Title,Director
+Netflix (3),Cast,Dim Title,Cast
+Netflix (3),Country,Dim Title,Country
+Netflix (3),Date Added,Dim Title,Date Added
+Netflix (3),Release Year,Dim Title,Release Year
+Netflix (3),Rating,Dim Title,Rating
+Netflix (3),Duration,Dim Title,Duration
+Netflix (3),Genre,Dim Title,Genre
+Netflix (3),Description,Dim Title,Description

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "742133b6d56108c0daf2",
+  "position": {
+    "x": 250.82590168702683,
+    "y": 132.24920638072476,
+    "z": 0,
+    "height": 847.52289378955527,
+    "width": 1532.0030698388334,
+    "tabOrder": 7000
+  },
+  "visualGroup": {
+    "displayName": "TV Shows",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

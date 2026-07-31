@@ -1,0 +1,118 @@
+table 'Dim Title'
+	lineageTag: cd4b79ad-29f1-44a6-95e6-7d642ee33716
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: dc197ab0-ca9f-450d-ade6-aad980a3cefb
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: a62532a8-ae4f-4910-9269-6894644248c2
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: a246d706-0998-4e30-8679-62b639194514
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 5cf261ad-3389-4a16-9159-840de39a3f77
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cast
+		dataType: string
+		lineageTag: d4308e4b-81ed-42ad-88fb-f86ce688a30f
+		summarizeBy: none
+		sourceColumn: Cast
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 848a0f5f-025a-43c9-a88a-baa042b70c85
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Added'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 31b3c117-40a8-4ce3-994e-7b7e0fca2f12
+		summarizeBy: none
+		sourceColumn: Date Added
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Release Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: ecdc8b4a-1679-41b1-a2c9-5a402439307b
+		summarizeBy: sum
+		sourceColumn: Release Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: string
+		lineageTag: 28b957ca-8f99-4f1f-8f66-cba5de27af34
+		summarizeBy: none
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: string
+		lineageTag: 12cceb9b-ff41-4f4b-9285-256782bd4ccf
+		summarizeBy: none
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre
+		dataType: string
+		lineageTag: 70d15072-9384-4c9e-a933-06d012800b9e
+		summarizeBy: none
+		sourceColumn: Genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: a19e84a3-9ced-41ab-a3c3-0c69dec978d9
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim Title' = m
+		mode: import
+		source =
+				let
+				    Source = NetflixSource
+				in
+				    Source
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

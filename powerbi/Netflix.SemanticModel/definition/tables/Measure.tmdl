@@ -1,0 +1,107 @@
+table Measure
+	lineageTag: aa9fb664-356c-41e7-9172-9f6d0a7b53ac
+
+	measure 'Total Movies' = CALCULATE(DISTINCTCOUNT(Netflix[Title]), Netflix[Type] = "Movie")
+		formatString: #,0
+		displayFolder: Summary
+		lineageTag: e40a87e0-e28a-4766-b320-ac5a5286aaa3
+
+		changedProperty = FormatString
+
+	measure 'Total TV Shows' = CALCULATE(DISTINCTCOUNT(Netflix[Title]), Netflix[Type] = "TV Show")
+		formatString: #,0
+		displayFolder: Summary
+		lineageTag: adafcc63-51d1-48f3-b981-4ca1c7b071ae
+
+		changedProperty = FormatString
+
+	measure 'Total Genre in Movies' = CALCULATE(DISTINCTCOUNT(Netflix[Genre]), Netflix[Type] = "Movie")
+		formatString: #,0
+		displayFolder: Summary
+		lineageTag: 1541c116-0474-476f-b9f3-5072f84bfe8c
+
+		changedProperty = FormatString
+
+	measure 'Total Genre in TV Shows' = CALCULATE(DISTINCTCOUNT(Netflix[Genre]), Netflix[Type] = "TV Show")
+		formatString: #,0
+		displayFolder: Summary
+		lineageTag: cdb169cb-6b11-4296-a466-ab5f9a92e620
+
+		changedProperty = FormatString
+
+	measure 'Top 10 Director' = CALCULATE(DISTINCTCOUNT(Netflix[Title]), KEEPFILTERS(Netflix[Director] <>BLANK()))
+		formatString: #,0
+		displayFolder: Summary
+		lineageTag: 57b489a1-79ce-4878-b11a-31983cd519c1
+
+		changedProperty = FormatString
+
+	measure Measure = DISTINCTCOUNT(Netflix[Title])
+		formatString: 0
+		lineageTag: 0c06ffaf-b31f-410f-96de-4c311a1126f4
+
+	measure 'Average Movies by Rating' = CALCULATE(AVERAGEX(VALUES(Netflix[Rating]), [Total Movies]), KEEPFILTERS(Netflix[Rating] <> BLANK()))
+		formatString: 0
+		displayFolder: Movies
+		lineageTag: e894106d-ffeb-48c4-aaa3-9637dac94528
+
+		changedProperty = FormatString
+
+	measure 'Average Movies by Country' = CALCULATE(AVERAGEX(VALUES(Netflix[Country]), [Total Movies]), KEEPFILTERS(Netflix[Country] <> BLANK()))
+		formatString: #,0
+		displayFolder: Movies
+		lineageTag: 81ae1430-94c4-444a-84a1-299d273b0b8e
+
+		changedProperty = FormatString
+
+	measure 'Average Movies by Genre' = CALCULATE(AVERAGEX(VALUES(Netflix[Genre]), [Total Movies]), KEEPFILTERS(Netflix[Genre] <> BLANK()))
+		formatString: #,0
+		displayFolder: Movies
+		lineageTag: b02475f7-f9ab-420c-a7ed-13fe67420155
+
+		changedProperty = FormatString
+
+	measure 'Most movies added to Netflix in which year' = CONCATENATEX(FILTER(ALLSELECTED('Date'[Year]), RANKX(ALLSELECTED('Date'[Year]), [Total Movies],,DESC,Dense)=1), 'Date'[Year], " , ")
+		displayFolder: Movies
+		lineageTag: e077fdba-7fde-4b7a-81e0-a3abe3c68255
+
+	measure 'Average TV Shows by Rating' = CALCULATE(AVERAGEX(VALUES(Netflix[Rating]), [Total TV Shows]), KEEPFILTERS(Netflix[Rating] <> BLANK()))
+		formatString: #,0
+		displayFolder: TV Shows
+		lineageTag: c95e4d52-fff1-4fcb-9491-c0ce2bf8f942
+
+		changedProperty = FormatString
+
+	measure 'Average TV Shows by Country' = CALCULATE(AVERAGEX(VALUES(Netflix[Country]), [Total TV Shows]), KEEPFILTERS(Netflix[Country] <> BLANK()))
+		formatString: 0
+		displayFolder: TV Shows
+		lineageTag: 1c3d922b-91d8-4cc6-aebc-924753941f60
+
+		changedProperty = FormatString
+
+	measure 'Average TV Shows by Genre' = CALCULATE(AVERAGEX(VALUES(Netflix[Genre]), [Total TV Shows]), KEEPFILTERS(Netflix[Genre] <> BLANK()))
+		formatString: 0
+		displayFolder: TV Shows
+		lineageTag: 14ded247-6fb8-4b54-b38c-fa1b7e57bf4d
+
+		changedProperty = FormatString
+
+	measure 'Most TV Shows added to Netflix in which year' = CONCATENATEX(FILTER(ALLSELECTED('Date'[Year]), RANKX(ALLSELECTED('Date'[Year]), [Total TV Shows],,DESC,Dense)=1), 'Date'[Year], " , ")
+		displayFolder: TV Shows
+		lineageTag: f94431da-3981-4732-835e-d65ef26a63fa
+
+	partition Measure-ff398da2-c683-4894-b6d6-27071d019ff1 = m
+		mode: import
+		queryGroup: Measure
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

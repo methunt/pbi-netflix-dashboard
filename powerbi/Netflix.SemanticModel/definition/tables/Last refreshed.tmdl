@@ -1,0 +1,35 @@
+table 'Last refreshed'
+	isHidden
+	lineageTag: 651859e6-ce94-4316-bd84-99971daca00f
+
+	column 'Last refreshed'
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 91201110-bae6-4a60-b934-8222a363744d
+		summarizeBy: none
+		sourceColumn: Last refreshed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Last refreshed-27059ed7-2d33-4f5b-b811-e5a0d9278645' = m
+		mode: import
+		queryGroup: Measure
+		source = ```
+				let
+				    Source = Date.From(DateTime.LocalNow())
+				    
+				in
+				    Source
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+

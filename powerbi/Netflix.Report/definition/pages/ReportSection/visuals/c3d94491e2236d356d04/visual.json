@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "c3d94491e2236d356d04",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 7000,
+    "height": 1011.4285714285714,
+    "width": 1800.0000000000002,
+    "tabOrder": 4000
+  },
+  "visualGroup": {
+    "displayName": "Profile menu",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

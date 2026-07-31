@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "80bf1cf25f2589cce3f2",
+  "position": {
+    "x": 15.714285714285714,
+    "y": 187.14285714285714,
+    "z": 5000,
+    "height": 60,
+    "width": 186.78571428571428,
+    "tabOrder": 0
+  },
+  "visualGroup": {
+    "displayName": "Summary Bt",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,119 @@
+table Netflix
+	lineageTag: ffef2d62-41c4-4e80-b780-5d798a98d5a8
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fd97e10-20af-410f-9b87-c1ffa22651dd
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = User
+
+	column Type
+		dataType: string
+		lineageTag: 7b26dbad-719e-4b29-9177-1e0b29e8c63a
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: 4c680689-953d-42ce-9e0c-ec602cb9057e
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Director
+		dataType: string
+		lineageTag: 6cd49193-6c38-472e-84bc-a4613f790d86
+		summarizeBy: none
+		sourceColumn: Director
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cast
+		dataType: string
+		lineageTag: 2c5ab6c4-9834-4d52-82ba-3329acce717c
+		summarizeBy: none
+		sourceColumn: Cast
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: f4e8f3ea-da5a-48a6-bfe6-098ea69e14f4
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Added'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3ad0fcb9-29d5-4569-a904-0cdaf2fe9b5c
+		summarizeBy: none
+		sourceColumn: Date Added
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Release Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: af81b937-cdd6-452d-a978-0b0c9b3fc2dd
+		summarizeBy: none
+		sourceColumn: Release Year
+
+		annotation SummarizationSetBy = User
+
+	column Rating
+		dataType: string
+		lineageTag: c78aa6d0-4bbc-4d0d-96ea-fef5f275f928
+		summarizeBy: none
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: string
+		lineageTag: 8d273e6a-cea0-4280-89c4-d5476ad7588a
+		summarizeBy: none
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genre
+		dataType: string
+		lineageTag: d7163c8f-85e9-493f-b806-32eaa4c7f64f
+		summarizeBy: none
+		sourceColumn: Genre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: bfed921d-790e-4b30-acde-f414027cfbb6
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Netflix-982143c0-5b56-4c06-94cc-59706edc475f = m
+		mode: import
+		source =
+				let
+				    Source = NetflixSource,
+				    #"Split Genre" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"Genre", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "Genre"),
+				    #"Split Country" = Table.ExpandListColumn(Table.TransformColumns(#"Split Genre", {{"Country", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "Country"),
+				    #"Trimmed Text" = Table.TransformColumns(#"Split Country",{{"Genre", Text.Trim, type text}, {"Country", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

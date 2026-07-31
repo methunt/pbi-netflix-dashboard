@@ -1,0 +1,63 @@
+{
+  "_comment": "Spec for build_readme_assets.py. Every {key} is substituted from summary.json, which build_summary.py derives from the CSV. A renamed fact fails the build rather than shipping a blank.",
+
+  "out_dir": "../assets",
+  "facts_from": "../summary.json",
+
+  "palette": {
+    "light": {
+      "primary": "#E50914",
+      "glow": "#E50914",
+      "bad": "#B81D24"
+    },
+    "dark": {
+      "primary": "#FF404A",
+      "glow": "#FF404A",
+      "bad": "#FF6B73"
+    }
+  },
+
+  "hero": {
+    "name": "hero",
+    "title": "What's On Netflix",
+    "subtitle": "A Power BI catalogue explorer over {source[kept_rows]:,} Netflix titles - what the library is made of, where it comes from, and when it landed. Built from one Kaggle CSV, kept as diffable PBIP text.",
+    "tiles": [
+      { "value": "{source[kept_rows]:,}", "label": "titles, after cleaning", "colour": "primary" },
+      { "value": "{catalogue[countries]}", "label": "countries represented", "colour": "cyan" },
+      { "value": "{catalogue[genres]}", "label": "genres, one row each", "colour": "violet" },
+      { "value": "{model[reduction_factor]}x", "label": "smaller bridge table", "colour": "good" }
+    ],
+    "badges": ["Power BI  ·  PBIP", "Power Query  ·  M", "TMDL", "Kaggle CSV", "star schema"]
+  },
+
+  "banners": [
+    {
+      "name": "section-data",
+      "eyebrow": "Part 1",
+      "title": "The dataset",
+      "body": "One Kaggle CSV, {source[raw_rows]:,} rows and {source[columns]} columns describing every title Netflix listed up to September 2021. Messier than it looks.",
+      "accent": "primary"
+    },
+    {
+      "name": "section-shape",
+      "eyebrow": "Part 2",
+      "title": "Making it answerable",
+      "body": "Three columns held lists, not values. Splitting them turns a spreadsheet into something you can ask questions of.",
+      "accent": "cyan"
+    },
+    {
+      "name": "section-findings",
+      "eyebrow": "Part 3",
+      "title": "What the catalogue actually looks like",
+      "body": "The United States holds {findings[us_titles]:,} titles. {findings[tv_ma]:,} carry a TV-MA rating. The library stopped growing in {findings[peak_year]}.",
+      "accent": "violet"
+    },
+    {
+      "name": "section-build",
+      "eyebrow": "Part 4",
+      "title": "How it is built",
+      "body": "One shared query feeds two tables, and the bridge lost {model[reduction_factor]}x its rows without changing a single number on the page.",
+      "accent": "good"
+    }
+  ]
+}

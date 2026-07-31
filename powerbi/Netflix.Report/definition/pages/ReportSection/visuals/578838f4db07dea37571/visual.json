@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "578838f4db07dea37571",
+  "position": {
+    "x": 241.7498081350729,
+    "y": 135.98748055771463,
+    "z": 1000,
+    "height": 847.58888168326769,
+    "width": 1532.0030698388334,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "Movies",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}
