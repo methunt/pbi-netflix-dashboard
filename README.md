@@ -1,8 +1,9 @@
 <a href="screenshots/Berlin.png">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-  <img alt="What's On Netflix — a Power BI catalogue explorer over 8,804 Netflix titles, covering 122 countries and 42 genres, with a bridge table 7.8 times smaller than the query that first built it." src="assets/hero-light.svg">
-</picture>
+  <h1>What's On Netflix</h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <img alt="What's On Netflix — a Power BI catalogue explorer over 8,804 Netflix titles, covering 122 countries and 42 genres, with a bridge table 7.8 times smaller than the query that first built it." src="assets/hero-light.svg">
+  </picture>
 </a>
 
 <p>
@@ -10,7 +11,7 @@
   <img alt="Power Query M" src="https://img.shields.io/badge/Power%20Query-M-0891B2?style=flat-square">
   <img alt="TMDL" src="https://img.shields.io/badge/model-TMDL-7C3AED?style=flat-square">
   <img alt="Data from Kaggle" src="https://img.shields.io/badge/data-Kaggle%20CSV-20BEFF?style=flat-square">
-  <img alt="Licence Apache 2.0" src="https://img.shields.io/badge/licence-Apache--2.0-059669?style=flat-square">
+  <img alt="Licence MIT" src="https://img.shields.io/badge/licence-MIT-059669?style=flat-square">
 </p>
 
 One Kaggle CSV of everything Netflix listed up to September 2021, turned into a semantic model that answers **what the catalogue is made of, where it comes from, and when it arrived** — and kept as diffable PBIP text rather than a binary.
@@ -50,10 +51,10 @@ One CSV is cleansed **once**, in a shared query called `NetflixSource`, and two 
 ---
 
 <a id="-dataset"></a>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/section-data-dark.svg">
-  <img alt="Part 1 — The dataset. One Kaggle CSV, 8,807 rows and 12 columns describing every title Netflix listed up to September 2021. Messier than it looks." src="assets/section-data-light.svg">
-</picture>
+
+## Part 1 — The dataset
+
+<img alt="One Kaggle CSV, 8,807 rows and 12 columns describing every title Netflix listed up to September 2021. Messier than it looks." src="assets/section-data-light.svg">
 
 The source is the **[Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows)** dataset on Kaggle — a snapshot of the catalogue, not a viewing or revenue log. There is no watch time in it and no subscriber data, so nothing here says what was *popular*; it describes what was *available*.
 
@@ -82,20 +83,20 @@ The source is the **[Netflix Movies and TV Shows](https://www.kaggle.com/dataset
 ---
 
 <a id="-shape"></a>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/section-shape-dark.svg">
-  <img alt="Part 2 — Making it answerable. Three columns held lists, not values. Splitting them turns a spreadsheet into something you can ask questions of." src="assets/section-shape-light.svg">
-</picture>
+
+## Part 2 — Making it answerable
+
+<img alt="Three columns held lists, not values. Splitting them turns a spreadsheet into something you can ask questions of." src="assets/section-shape-light.svg">
 
 Each change to the raw file exists to answer a business question the spreadsheet could not. Left column: what changed. Right column: **what the dashboard can now tell you because of it.**
 
 | | What changed | What it lets the business see |
 |---|---|---|
-| ✂️ | The genre list became **one row per genre** — a title filed under `Dramas, International Movies` now sits under both | *Which genres is Netflix actually buying?* International Movies turns out to lead at **2,750 titles** — the catalogue's centre of gravity is imported content, not any single genre |
-| 🌍 | The country list was split the same way, so a co-production belongs to each of its countries | *Where is the catalogue sourced from?* **122 countries**, but the US holds **3,685 titles** and India **1,046** — concentration at the top with a very long tail |
-| 📅 | `date_added` became a real date joined to a calendar | *When did the library get big, and is it still growing?* Additions run **56 → 251 → 837 → 1,237 → 1,424** films a year to 2019, then fall — the growth story has an ending |
+| ✂️ | The genre list became **one row per genre** — a title filed under `Dramas, International Movies` now sits under both | *Which genres is Netflix actually buying?* Answerable for the first time — see [Part 3](#-findings) for which genre actually leads. |
+| 🌍 | The country list was split the same way, so a co-production belongs to each of its countries | *Where is the catalogue sourced from?* **122 countries**, with concentration at the top and a very long tail — see [Part 3](#-findings) for the breakdown. |
+| 📅 | `date_added` became a real date joined to a calendar | *When did the library get big, and is it still growing?* The growth story has an ending — see [Part 3](#-findings) for the year-by-year numbers. |
 | 🏷️ | Columns were renamed to business names — `listed_in` became `Genre`, `date_added` became `Date Added` | Anyone can build their own view without a data dictionary; the field list *is* the interface |
-| 🔞 | Ratings were cleaned so the slicer holds only real ratings | *Who is the catalogue made for?* **TV-MA leads at 3,205 titles** — an adult-first library, with children's ratings a small tail |
+| 🔞 | Ratings were cleaned so the slicer holds only real ratings | *Who is the catalogue made for?* Answerable directly from the slicer — see [Part 3](#-findings) for the split. |
 | 👥 | A second, unsplit copy of the table was kept alongside the split one | Title counts stay honest. A 2-genre, 3-country film is one title, not six — so "how many titles" and "titles by genre" can both be right at once |
 
 > [!IMPORTANT]
@@ -104,10 +105,10 @@ Each change to the raw file exists to answer a business question the spreadsheet
 ---
 
 <a id="-findings"></a>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/section-findings-dark.svg">
-  <img alt="Part 3 — What the catalogue actually looks like. The United States holds 3,685 titles. 3,205 carry a TV-MA rating. The library stopped growing in 2019." src="assets/section-findings-light.svg">
-</picture>
+
+## Part 3 — What the catalogue actually looks like
+
+<img alt="The United States holds 3,685 titles. 3,205 carry a TV-MA rating. The library stopped growing in 2019." src="assets/section-findings-light.svg">
 
 <picture>
   <img alt="Tour of the report, cycling through four views: the Who's Watching profile picker, the Summary view with its KPI cards and yearly trend lines, the Movies view with monthly additions and top ratings, and the TV Shows view with the same cuts for series." src="assets/tour.gif" width="900">
@@ -129,10 +130,10 @@ The report opens on a Netflix-style **"Who's Watching?"** profile picker. Choosi
 ---
 
 <a id="-build"></a>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/section-build-dark.svg">
-  <img alt="Part 4 — How it is built. One shared query feeds two tables, and the bridge lost 7.8 times its rows without changing a single number on the page." src="assets/section-build-light.svg">
-</picture>
+
+## Part 4 — How it is built
+
+<img alt="One shared query feeds two tables, and the bridge lost 7.8 times its rows without changing a single number on the page." src="assets/section-build-light.svg">
 
 The model works, and it was also doing a lot of unnecessary work. Three changes, none of which move a number on any visual:
 
@@ -186,6 +187,10 @@ Everything below is reference — read it when you need it.
 
 The CSV in `data/` is the public **[Netflix Movies and TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows)** dataset from Kaggle, committed unmodified. No production or proprietary data is involved. All cleaning happens in Power Query, so the source file stays a faithful copy of what was downloaded and `scripts/build_summary.py` can recount it independently of the model.
 
+### Licence
+
+[MIT](LICENSE) for the code in this repo. The Kaggle CSV keeps its own licence from its source page.
+
 ### Repo layout
 
 ```
@@ -194,7 +199,7 @@ Netflix Dashboard/
 ├─ powerbi/         PBIP project — Netflix.SemanticModel (TMDL) + Netflix.Report (PBIR)
 ├─ scripts/         summary + asset generators, screenshot crop, tour builder
 ├─ screenshots/     cropped page captures (_raw/ holds the 3× originals)
-├─ assets/          light/dark SVGs and the tour GIF
+├─ assets/          hero/CTA/schema SVGs (light+dark), section captions (light-only) and the tour GIF
 └─ summary.json     every figure this README quotes, regenerated from the CSV
 ```
 

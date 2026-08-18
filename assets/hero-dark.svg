@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 382"
-     width="1200" height="382" role="img" aria-label="What's On Netflix">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 186"
+     width="1200" height="186" role="img" aria-label="What's On Netflix">
   <style>
     /* Entrance animations move things but never fade them. A renderer that does
        not run CSS - GitHub's mobile app, an email digest, a PDF export - would
@@ -21,80 +21,17 @@
       <stop offset="100%" stop-color="#FF404A" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <!-- Deliberately no background rect. GitHub has four surfaces - white,
-       light-high-contrast, dark #0D1117 and dark dimmed #22272E - and any colour
-       painted here is wrong on at least one of them. A transparent canvas is
-       right on all four; the tiles and badges supply the structure a card
-       would have. -->
+  <!-- The panel paints the theme's own card colour rather than staying
+       transparent, so the hero reads as a deliberate surface on all four
+       GitHub backgrounds instead of borrowing whichever one sits behind it. -->
+  <rect width="1200" height="186" rx="16" fill="#161B22"/>
+  <rect x="0.5" y="0.5" width="1199" height="185" rx="15.5" fill="none" stroke="#30363D"/>
+  <rect width="8" height="186" rx="4" fill="#FF404A"/>
   <g class="blob"><circle cx="1010" cy="70" r="240" fill="url(#g)"/></g>
-  <text class="rise" x="40" y="92" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="44" font-weight="800"
-        fill="#E6EDF3" letter-spacing="-1">What's On Netflix</text>
-  <rect class="sweep" x="40" y="116" width="1120" height="2"
+  <text class="rise" x="40" y="74" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="22" font-weight="700"
+        letter-spacing="3" fill="#FF404A">8,804 TITLES  ·  122 COUNTRIES  ·  42 GENRES</text>
+  <rect class="sweep" x="40" y="108" width="1120" height="2"
         rx="1" fill="#30363D"/>
-  <text class="rise" style="animation-delay:0.20s" x="40" y="148"
-        font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19.5" fill="#8B949E">A Power BI catalogue explorer over 8,804 Netflix titles - what the library is made of, where it comes from, and</text>
-  <text class="rise" style="animation-delay:0.25s" x="40" y="176"
-        font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="19.5" fill="#8B949E">when it landed. Built from one Kaggle CSV, kept as diffable PBIP text.</text>
-  <g class="rise" style="animation-delay:0.35s">
-    <rect x="40" y="206" width="268" height="100" rx="10" fill="#161B22" stroke="#30363D"/>
-    <rect x="40" y="206" width="4" height="100" rx="2" fill="#FF404A"/>
-    <text x="62" y="256" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="35" font-weight="700"
-          fill="#E6EDF3" letter-spacing="-0.5">8,804</text>
-    <text x="62" y="284" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5"
-          fill="#8B949E">titles, after cleaning</text>
-  </g>
-  <g class="rise" style="animation-delay:0.46s">
-    <rect x="324" y="206" width="268" height="100" rx="10" fill="#161B22" stroke="#30363D"/>
-    <rect x="324" y="206" width="4" height="100" rx="2" fill="#22D3EE"/>
-    <text x="346" y="256" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="35" font-weight="700"
-          fill="#E6EDF3" letter-spacing="-0.5">122</text>
-    <text x="346" y="284" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5"
-          fill="#8B949E">countries represented</text>
-  </g>
-  <g class="rise" style="animation-delay:0.57s">
-    <rect x="608" y="206" width="268" height="100" rx="10" fill="#161B22" stroke="#30363D"/>
-    <rect x="608" y="206" width="4" height="100" rx="2" fill="#8B5CF6"/>
-    <text x="630" y="256" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="35" font-weight="700"
-          fill="#E6EDF3" letter-spacing="-0.5">42</text>
-    <text x="630" y="284" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5"
-          fill="#8B949E">genres, one row each</text>
-  </g>
-  <g class="rise" style="animation-delay:0.68s">
-    <rect x="892" y="206" width="268" height="100" rx="10" fill="#161B22" stroke="#30363D"/>
-    <rect x="892" y="206" width="4" height="100" rx="2" fill="#10B981"/>
-    <text x="914" y="256" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="35" font-weight="700"
-          fill="#E6EDF3" letter-spacing="-0.5">7.8x</text>
-    <text x="914" y="284" font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="16.5"
-          fill="#8B949E">smaller bridge table</text>
-  </g>
-  <g class="rise" style="animation-delay:0.85s">
-    <rect x="40" y="328" width="167" height="32" rx="16"
-          fill="#1C2128" stroke="#30363D"/>
-    <text x="123" y="349" text-anchor="middle"
-          font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" fill="#8B949E">Power BI  ·  PBIP</text>
-  </g>
-  <g class="rise" style="animation-delay:0.92s">
-    <rect x="217" y="328" width="167" height="32" rx="16"
-          fill="#1C2128" stroke="#30363D"/>
-    <text x="300" y="349" text-anchor="middle"
-          font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" fill="#8B949E">Power Query  ·  M</text>
-  </g>
-  <g class="rise" style="animation-delay:0.99s">
-    <rect x="394" y="328" width="58" height="32" rx="16"
-          fill="#1C2128" stroke="#30363D"/>
-    <text x="422" y="349" text-anchor="middle"
-          font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" fill="#8B949E">TMDL</text>
-  </g>
-  <g class="rise" style="animation-delay:1.06s">
-    <rect x="461" y="328" width="108" height="32" rx="16"
-          fill="#1C2128" stroke="#30363D"/>
-    <text x="515" y="349" text-anchor="middle"
-          font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" fill="#8B949E">Kaggle CSV</text>
-  </g>
-  <g class="rise" style="animation-delay:1.13s">
-    <rect x="579" y="328" width="116" height="32" rx="16"
-          fill="#1C2128" stroke="#30363D"/>
-    <text x="637" y="349" text-anchor="middle"
-          font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" fill="#8B949E">star schema</text>
-  </g>
+  <text class="rise" style="animation-delay:0.20s" x="40" y="146"
+        font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="25" fill="#8B949E">One Kaggle CSV, kept as diffable PBIP text - not a binary.</text>
 </svg>

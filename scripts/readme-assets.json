@@ -17,17 +17,13 @@
     }
   },
 
+  "_hero_comment": "subtitle used to nearly word-for-word repeat the README's own intro paragraph ('what the library is made of, where it comes from, and when it landed' vs 'what the catalogue is made of, where it comes from, and when it arrived') - shortened so the two don't say the same sentence twice in a row. No tiles or badges: the four figures already live in the 'What it is for' table and the eyebrow below, and the badge row is the separate shields.io line under the hero.",
   "hero": {
     "name": "hero",
     "title": "What's On Netflix",
-    "subtitle": "A Power BI catalogue explorer over {source[kept_rows]:,} Netflix titles - what the library is made of, where it comes from, and when it landed. Built from one Kaggle CSV, kept as diffable PBIP text.",
-    "tiles": [
-      { "value": "{source[kept_rows]:,}", "label": "titles, after cleaning", "colour": "primary" },
-      { "value": "{catalogue[countries]}", "label": "countries represented", "colour": "cyan" },
-      { "value": "{catalogue[genres]}", "label": "genres, one row each", "colour": "violet" },
-      { "value": "{model[reduction_factor]}x", "label": "smaller bridge table", "colour": "good" }
-    ],
-    "badges": ["Power BI  ·  PBIP", "Power Query  ·  M", "TMDL", "Kaggle CSV", "star schema"]
+    "eyebrow": "{source[kept_rows]:,} titles  ·  {catalogue[countries]} countries  ·  {catalogue[genres]} genres",
+    "subtitle": "One Kaggle CSV, kept as diffable PBIP text - not a binary.",
+    "accent": "primary"
   },
 
   "banners": [
